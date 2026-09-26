@@ -41,7 +41,15 @@ Python dependencies are installed only inside this environment.
 
 ## Running the Test
 
-The RX 6600 must be explicitly exposed to Rusticl through RadeonSI:
+The canonical way to run the project is:
+
+```bash
+./run.sh
+```
+
+The runner explicitly exposes the RX 6600 to Rusticl through RadeonSI.
+
+For direct execution, the equivalent command is:
 
 ```bash
 RUSTICL_ENABLE=radeonsi python opencl_test.py
@@ -55,6 +63,26 @@ Device:   AMD Radeon RX 6600 (...)
 OpenCL:   OpenCL 3.0
 Result correct: True
 ```
+
+## Reproducible Setup
+
+The project declares its direct Python dependencies in `requirements.txt`.
+
+To recreate the environment in a fresh virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Then run:
+
+```bash
+./run.sh
+```
+
+The project has been validated successfully from a fresh temporary virtual environment using the same `requirements.txt` dependencies.
 
 ## Why `RUSTICL_ENABLE=radeonsi` Is Required
 
